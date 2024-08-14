@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Web Page</title>
+    <script src="https://unpkg.com/htmx.org@2.0.1"></script>
+    <link rel="stylesheet" href="static\fancy.css">
+</head>
+
+<body>
+    <h1>Welcome to My Web Page</h1>
+
+    <p>This is a sample paragraph.</p>
+    <div id="alert"></div>
+    <div class="con">
+        <div class="box">
+            no device found
+        </div>
+        <div class="formandtext">
+            Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit.
+            Nullam in dui euismod, tincidunt
+            nunc id, aliquet nunc. Sed
+            <br>
+            <form>
+                <label for="ID">ID:</label><br>
+                <input type="text" id="ID" name="ID"><br>
+                <label for="MSG">Message:</label><br>
+                <textarea id="MSG" name="MSG"></textarea><br>
+                <button type="submit" hx-post="/submit" hx-trigger="click" hx-swap="innerHTML"
+                    hx-target="#alert">Submit</button>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
