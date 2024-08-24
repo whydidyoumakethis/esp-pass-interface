@@ -13,8 +13,19 @@
     <p>This is a sample paragraph.</p>
     <div id="alert"></div>
     <div class="con">
-        <div class="box">
-            no device found
+        <div class="boxesandbuttons">
+
+        
+        <div class="boxandbox">
+        <div class="box" id="portbox">
+            {{.com }}
+        </div>
+        <div class="box" id="devicebox">
+            device not connected, no messages to be shown
+        </div>
+        </div>
+        <button hx-get="/connect" hx-trigger="click" hx-swap="innerHTML" hx-target="#devicebox">connect</button>
+        <button hx-get="/ports" hx-trigger="click" hx-swap="innerHTML" hx-target="#portbox">refresh</button>
         </div>
         <div class="formandtext">
             Lorem ipsum dolor sit amet,
