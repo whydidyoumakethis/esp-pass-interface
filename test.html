@@ -15,17 +15,19 @@
     <div class="con">
         <div class="boxesandbuttons">
 
-        
-        <div class="boxandbox">
-        <div class="box" id="portbox">
-            {{.com }}
-        </div>
-        <div class="box" id="devicebox">
-            device not connected, no messages to be shown
-        </div>
-        </div>
-        <button hx-get="/connect" hx-trigger="click" hx-swap="innerHTML" hx-target="#devicebox">connect</button>
-        <button hx-get="/ports" hx-trigger="click" hx-swap="innerHTML" hx-target="#portbox">refresh</button>
+
+            <div class="boxandbox">
+
+                <div class="box" id="portbox">
+                    {{.com }}
+                </div>
+                <div class="box" id="devicebox">
+                    device not connected, no messages to be shown
+                </div>
+            </div>
+            <button hx-get="/connect" hx-trigger="click" hx-swap="innerHTML" hx-target="#devicebox"
+                hx-vals='js:{"port": document.getElementById("port-select").value}'>connect</button>
+            <button hx-get="/ports" hx-trigger="click" hx-swap="innerHTML" hx-target="#portbox">refresh</button>
         </div>
         <div class="formandtext">
             Lorem ipsum dolor sit amet,
@@ -33,15 +35,25 @@
             Nullam in dui euismod, tincidunt
             nunc id, aliquet nunc. Sed
             <br>
-            <form>
+
                 <label for="ID">ID:</label><br>
                 <input type="text" id="ID" name="ID"><br>
                 <label for="MSG">Message:</label><br>
                 <textarea id="MSG" name="MSG"></textarea><br>
-                <button type="submit" hx-post="/submit" hx-trigger="click" hx-swap="innerHTML"
-                    hx-target="#alert">Submit</button>
+                <!-- Submit button using HTMX -->
+                <!-- dumb button only works with get and not post -->
+                <button hx-get="/submit" 
+                        hx-trigger="click"
+                        hx-swap="innerHTML"
+                        hx-target="#alert"
+                        hx-vals='js:{
+                            "ID": document.getElementById("ID").value,
+                            "MSG": document.getElementById("MSG").value,
+                            "port": document.getElementById("port-select").value
+                        }'>
+                    Submit
+                </button>
 
-            </form>
         </div>
     </div>
 </body>
