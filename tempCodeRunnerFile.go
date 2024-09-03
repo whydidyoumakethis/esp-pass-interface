@@ -1,1 +1,0 @@
-	port.SetReadTimeout(5 * time.Second)
